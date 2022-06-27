@@ -44,9 +44,10 @@ class CustomSet:
         self.__len = len(_elems)
     
     def __str__(self, out : str = '# CustomSet\n') -> str:
+        buffer = out
         for ind, elem in zip(range(self.__len), self.__elems):
             out += f'|{ind + 1}. {elem}\n'
-        return out if out != '# CustomSet\n' else '# CustomSet\n|0.\n'
+        return out if out != buffer else f'{out}|0.\n'
 
     def __len__(self) -> int:
         return self.__len
@@ -116,7 +117,7 @@ class CustomSet:
 #\=============================================================================/#
 
 #\=============================================================================/#
-def UnitTest() -> None:
+def __UnitTest() -> None:
     """
     UnitTest for CustomSet
     """
@@ -156,18 +157,18 @@ def UnitTest() -> None:
         b += 1
 
     print(
-        f'Size of Catalog object after pushing elements: {ct.__sizeof__()} Mb\n'
+        f'Size of CustomSet object after pushing elements: {ct.__sizeof__()} Mb\n'
         f'With len: {len(ct)} and average size: {sys.getsizeof(ct[-1])} byte'
     )
 
     ct.clear()
 
-    print(f'Size of Catalog object after clear(): {ct.__sizeof__()} byte\n')
+    print(f'Size of CustomSet object after clear(): {ct.__sizeof__()} byte\n')
 
     del ct, ct2, ct3
 #\==================================================================/#
 
 #\==================================================================/#
 if __name__ == '__main__':
-    UnitTest()
+    __UnitTest()
 #\==================================================================/#
